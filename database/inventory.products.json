@@ -1,0 +1,95 @@
+[{
+  "_id": {
+    "$oid": "6512c3f7e193861f840aca3a"
+  },
+  "name": "rice",
+  "price": 100,
+  "quantity": 78,
+  "expiryDate": {
+    "$date": "2023-10-28T00:00:00.000Z"
+  },
+  "vendor": "rakesh",
+  "createdAt": {
+    "$date": "2023-09-26T11:43:51.242Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-01T08:27:28.895Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512c45d1bae4723110ddbf2"
+  },
+  "name": "dal",
+  "price": 100,
+  "quantity": 200,
+  "expiryDate": {
+    "$date": "2023-10-28T00:00:00.000Z"
+  },
+  "vendor": "rakesh",
+  "createdAt": {
+    "$date": "2023-09-26T11:45:33.687Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T11:45:33.687Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512c4a2e0fc9cc3c8cda897"
+  },
+  "name": "chini",
+  "price": 50,
+  "quantity": 200,
+  "expiryDate": {
+    "$date": "2023-09-30T00:00:00.000Z"
+  },
+  "vendor": "dipesh",
+  "createdAt": {
+    "$date": "2023-09-26T11:46:42.064Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T11:46:42.064Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512c51b254ca13f3cbff62d"
+  },
+  "name": "maar",
+  "price": 200,
+  "quantity": 300,
+  "expiryDate": {
+    "$date": "2023-09-30T00:00:00.000Z"
+  },
+  "vendor": "dipesh",
+  "createdAt": {
+    "$date": "2023-09-26T11:48:43.795Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T11:48:43.795Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512d2e3ff9835236e419e66"
+  },
+  "name": "kfc",
+  "price": 200,
+  "quantity": 900,
+  "expiryDate": {
+    "$date": "2023-09-30T00:00:00.000Z"
+  },
+  "vendor": "ram bahadur",
+  "createdAt": {
+    "$date": "2023-09-26T12:47:31.355Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T12:47:55.452Z"
+  },
+  "__v": 0
+}]

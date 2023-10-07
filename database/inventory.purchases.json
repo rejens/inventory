@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "6512c3f7e193861f840aca3c"
+  },
+  "name": "rice",
+  "price": 100,
+  "quantity": 100,
+  "vendor": "rakesh",
+  "createdAt": {
+    "$date": "2023-09-26T11:43:51.261Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T11:43:51.261Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512c45d1bae4723110ddbf4"
+  },
+  "name": "dal",
+  "price": 100,
+  "quantity": 200,
+  "vendor": "rakesh",
+  "createdAt": {
+    "$date": "2023-09-26T11:45:33.703Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T11:45:33.703Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512c4a2e0fc9cc3c8cda899"
+  },
+  "name": "chini",
+  "price": 50,
+  "quantity": 200,
+  "vendor": "dipesh",
+  "createdAt": {
+    "$date": "2023-09-26T11:46:42.080Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T11:46:42.080Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512c51b254ca13f3cbff62f"
+  },
+  "name": "maar",
+  "price": 200,
+  "quantity": 300,
+  "vendor": "dipesh",
+  "createdAt": {
+    "$date": "2023-09-26T11:48:43.809Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T11:48:43.809Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512d2e3ff9835236e419e68"
+  },
+  "name": "kfc",
+  "price": 200,
+  "quantity": 100,
+  "vendor": "ram bahadur",
+  "createdAt": {
+    "$date": "2023-09-26T12:47:31.376Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T12:47:31.376Z"
+  },
+  "__v": 0
+}]

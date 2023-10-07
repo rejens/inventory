@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "6512c52c6e3164d2402e1fac"
+  },
+  "name": "rice",
+  "price": 100,
+  "quantity": 10,
+  "customerName": "rejens",
+  "createdAt": {
+    "$date": "2023-09-25T11:49:00.870Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-25T11:49:00.870Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6512d2fbff9835236e419e70"
+  },
+  "name": "kfc",
+  "price": 200,
+  "quantity": 100,
+  "customerName": "rejens",
+  "createdAt": {
+    "$date": "2023-09-26T12:47:55.440Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-26T12:47:55.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65192d703c0029ba375218a9"
+  },
+  "name": "rice",
+  "price": 100,
+  "quantity": 12,
+  "customerName": "rejens",
+  "createdAt": {
+    "$date": "2023-10-01T08:27:28.881Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-01T08:27:28.881Z"
+  },
+  "__v": 0
+}]

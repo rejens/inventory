@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+   -moz-appearance: textfield;
+}
+
+.active {
+   @apply bg-slate-400 text-white;
+}
+
+@tailwind utilities;

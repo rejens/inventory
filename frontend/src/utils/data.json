@@ -1,0 +1,44 @@
+[
+   {
+      "sn": 1,
+      "name": "rice",
+      "quantity": 100,
+      "price": 50
+   },
+   {
+      "sn": 2,
+      "name": "dal",
+      "quantity": 100,
+      "price": 50
+   },
+   {
+      "sn": 3,
+      "name": "sugar",
+      "quantity": 100,
+      "price": 50
+   },
+   {
+      "sn": 4,
+      "name": "salt",
+      "quantity": 100,
+      "price": 50
+   },
+   {
+      "sn": 5,
+      "name": "oil",
+      "quantity": 100,
+      "price": 50
+   },
+   {
+      "sn": 6,
+      "name": "wheat",
+      "quantity": 100,
+      "price": 50
+   },
+   {
+      "sn": 7,
+      "name": "milk",
+      "quantity": 100,
+      "price": 50
+   }
+]
