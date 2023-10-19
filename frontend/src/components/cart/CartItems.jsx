@@ -7,7 +7,7 @@ export default function CartItems() {
       <div>
          <ul>
             {cart?.map((item) => (
-               <li className="my-3 flex justify-around my-5 " key={item.name}>
+               <li className="flex justify-around my-5 " key={item.name}>
                   <button
                      onClick={() => {
                         removeItemFromCart(item);
