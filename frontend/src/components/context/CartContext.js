@@ -29,6 +29,16 @@ function CartContextProvider({ children, session }) {
       }
    };
 
+   //initialize cart
+   useEffect(() => {
+      try {
+         const cart = JSON.parse(localStorage.getItem("cart"));
+         dispatch({ type: "MANAGE_CART", payload: cart });
+      } catch (error) {
+         console.log(error);
+      }
+   }, []);
+
    //add item to cart
    const addItemToCart = async (item, quantity = 1, leftQuantity) => {
       try {
@@ -37,7 +47,20 @@ function CartContextProvider({ children, session }) {
          if (!cart.filter((cartItem) => cartItem._id === item._id).length > 0) {
             cart.push({ ...item, quantity, leftQuantity });
             dispatch({ type: "MANAGE_CART", payload: cart });
+            // addItemToCartInLocalStorage(item.name, quantity);
+            localStorage.setItem("cart", JSON.stringify(cart));
          }
+      } catch (error) {
+         console.log(error);
+      }
+   };
+
+   //remove item from cart
+   const removeItemFromCart = async (item) => {
+      try {
+         let cart = state.cart.filter((cartItem) => cartItem._id !== item._id);
+         dispatch({ type: "MANAGE_CART", payload: cart });
+         localStorage.setItem("cart", JSON.stringify(cart));
       } catch (error) {
          console.log(error);
       }
@@ -47,6 +70,7 @@ function CartContextProvider({ children, session }) {
    const checkoutCart = async () => {
       try {
          dispatch({ type: "MANAGE_CART", payload: [] });
+         localStorage.setItem("cart", JSON.stringify([]));
       } catch (error) {
          console.log(error);
       }
@@ -69,6 +93,7 @@ function CartContextProvider({ children, session }) {
             addItemToCart,
             checkoutCart,
             addCustomerName,
+            removeItemFromCart,
          }}
       >
          {children}

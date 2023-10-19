@@ -48,7 +48,7 @@ export default function CartSidebar() {
                className="text-2xl absolute right-10 top-5 hover:cursor-pointer"
                onClick={changeCartState}
             >
-               X
+               ✕
             </span>
 
             {/* cart items components */}

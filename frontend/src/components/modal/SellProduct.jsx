@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { FaCartPlus } from "react-icons/fa";
-import InventoryContext from "../context/InventoryContext";
 import CartContext from "../context/CartContext";
 
 //
@@ -10,8 +9,7 @@ export default function SellProduct({ product }) {
    const [valError, setValError] = useState(false);
    const [quantity, setQuantity] = useState(0);
 
-   const { addSales, sellProduct } = useContext(InventoryContext);
-   const { addItemToCart } = useContext(CartContext);
+   const { addItemToCart, cart } = useContext(CartContext);
 
    const modalShow = () => {
       document.querySelector(`#my_modal_${product._id}`).showModal();
@@ -24,7 +22,10 @@ export default function SellProduct({ product }) {
    };
 
    const addToCart = () => {
-      Toast({ type: "success", message: "Product added to cart" });
+      if (cart.filter((item) => item._id === product._id).length > 0) {
+         Toast({ type: "error", message: "Product already in cart" });
+         return;
+      }
 
       if (quantity > 0 && !valError) {
          const leftQuantity = product.quantity - quantity;
@@ -32,6 +33,7 @@ export default function SellProduct({ product }) {
          document.querySelector(`#my_modal_${product._id} #quantity`).value =
             "";
          document.querySelector(`#my_modal_${product._id}`).close();
+         Toast({ type: "success", message: "Product added to cart" });
       }
    };
 
