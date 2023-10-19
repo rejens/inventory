@@ -3,6 +3,8 @@ import { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
 import { useNavigate } from "react-router-dom";
 
+import Toast from "../shared/toast";
+
 const InventoryContext = createContext();
 
 function InventoryContextProvider({ children }) {
@@ -65,6 +67,7 @@ function InventoryContextProvider({ children }) {
                type: "DELETE_PRODUCT",
                payload: id,
             });
+            Toast({ type: "success", message: "product deleted successfully" });
          }
       } catch (error) {
          console.log(error);
@@ -140,7 +143,6 @@ function InventoryContextProvider({ children }) {
                payload: data,
             });
          }
-
       } catch (error) {
          console.log(error);
       }
@@ -231,14 +233,14 @@ function InventoryContextProvider({ children }) {
       }
    };
 
-   const addSales = async (product, quantity) => {
+   const addSales = async (product, quantity, customerName) => {
       try {
          const response = await fetch(`${process.env.REACT_APP_SERVER}/sales`, {
             method: "POST",
             headers: {
                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ ...product, quantity }),
+            body: JSON.stringify({ ...product, quantity, customerName }),
          });
          if (response.status === 201) {
             const data = await response.json();

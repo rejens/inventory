@@ -7,16 +7,13 @@ export default function CartItems() {
       <div>
          <ul>
             {cart?.map((item) => (
-               <>
-                  <li className="my-3 flex justify-around " key={item.name}>
-                     <div>{item.name}</div>
-                     <div>
-                        ({item.price} * {item.quantity}) Rs.{" "}
-                        {item.price * item.quantity}{" "}
-                     </div>
-                  </li>
-                  <hr />
-               </>
+               <li className="my-3 flex justify-around " key={item.name}>
+                  <div>{item.name}</div>
+                  <div>
+                     ({item.sellingPrice} * {item.quantity}) Rs.{" "}
+                     {item.sellingPrice * item.quantity}{" "}
+                  </div>
+               </li>
             ))}
          </ul>
       </div>

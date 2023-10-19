@@ -5,6 +5,7 @@ import InventoryContext from "../context/InventoryContext";
 import CartContext from "../context/CartContext";
 
 import SellProduct from "../modal/SellProduct";
+import CustomerModal from "../modal/CustomerModal";
 
 import { FaEdit, FaTrash, FaCartArrowDown } from "react-icons/fa";
 
@@ -14,6 +15,7 @@ export default function Inventory() {
 
    return (
       <div>
+         <CustomerModal />
          <div className="flex justify-end mx-5">
             <Link
                to={"/inventory/add"}
@@ -28,7 +30,8 @@ export default function Inventory() {
                   <th className="font-medium">sn</th>
                   <th className="font-medium">name</th>
                   <th className="font-medium">quantity</th>
-                  <th className="font-medium">price</th>
+                  <th className="font-medium">cost price</th>
+                  <th className="font-medium">selling price</th>
                   <th className="font-medium">action</th>
                </tr>
             </thead>
@@ -42,7 +45,13 @@ export default function Inventory() {
                         <td className="text-center py-3">{index + 1}</td>
                         <td className="text-center py-3">{product.name}</td>
                         <td className="text-center py-3">{product.quantity}</td>
-                        <td className="text-center py-3">{product.price}</td>
+                        <td className="text-center py-3">
+                           {product.costPrice}
+                        </td>
+                        <td className="text-center py-3">
+                           {product.sellingPrice}
+                        </td>
+
                         <td className="text-center py-3">
                            <div className="flex justify-center gap-2">
                               <Link to={`/inventory/edit/${product._id}`}>

@@ -11,6 +11,7 @@ function CartContextProvider({ children, session }) {
       hideDropdown: true,
       sidebarType: null,
       registered: null,
+      customerName: null,
    };
 
    //for managing global state
@@ -51,6 +52,15 @@ function CartContextProvider({ children, session }) {
       }
    };
 
+   //add customer name
+   const addCustomerName = async (name) => {
+      try {
+         dispatch({ type: "CUSTOMER_NAME", payload: name });
+      } catch (error) {
+         console.log(error);
+      }
+   };
+
    return (
       <CartContext.Provider
          value={{
@@ -58,6 +68,7 @@ function CartContextProvider({ children, session }) {
             changeCartState,
             addItemToCart,
             checkoutCart,
+            addCustomerName,
          }}
       >
          {children}

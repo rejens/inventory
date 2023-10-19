@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 const SalesSchema = new mongoose.Schema(
    {
       name: { type: String, required: true },
-      price: { type: Number, required: true },
+      costPrice: { type: Number, required: false },
+      sellingPrice: { type: Number, required: false },
       quantity: { type: Number, required: true },
-      customerName: { type: String, required: true, default: "rejens" },
+      customerName: { type: String, required: true },
    },
    {
       timestamps: true,

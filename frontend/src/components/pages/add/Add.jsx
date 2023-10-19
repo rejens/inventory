@@ -9,7 +9,8 @@ export default function Add() {
       initialValues: {
          name: "",
          quantity: "",
-         price: "",
+         costPrice: "",
+         sellingPrice: "",
          expiryDate: "",
          vendor: "",
       },
@@ -42,7 +43,7 @@ export default function Add() {
             </div>
 
             <div className="flex flex-wrap -mx-3 mb-6">
-               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+               <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                   <label
                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                      htmlFor="quantity"
@@ -58,19 +59,36 @@ export default function Add() {
                      onChange={handleChange}
                   />
                </div>
-               <div className="w-full md:w-1/2 px-3">
+               <div className="w-full md:w-1/3 px-3">
                   <label
                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                      htmlFor="price"
                   >
-                     Price{" "}
+                     Cost Price{" "}
                   </label>
                   <input
                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                     id="price"
+                     id="costPrice"
                      type="number"
                      placeholder=""
-                     value={values.price}
+                     value={values.costPrice}
+                     onChange={handleChange}
+                  />
+               </div>
+
+               <div className="w-full md:w-1/3 px-3">
+                  <label
+                     className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                     htmlFor="price"
+                  >
+                     Selling Price{" "}
+                  </label>
+                  <input
+                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                     id="sellingPrice"
+                     type="number"
+                     placeholder=""
+                     value={values.sellingPrice}
                      onChange={handleChange}
                   />
                </div>

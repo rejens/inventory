@@ -38,7 +38,7 @@ export const editProduct = asyncHandler(async (req, res) => {
 });
 
 // @desc    fetch about to expire product
-// @route   PUT /api/products/expire
+// @route   GET /api/products/expire
 export const fetchAboutToExpireProduct = asyncHandler(async (req, res) => {
    //
    var today = new Date();

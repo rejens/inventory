@@ -3,7 +3,10 @@ import { FaCartPlus } from "react-icons/fa";
 import InventoryContext from "../context/InventoryContext";
 import CartContext from "../context/CartContext";
 
-export default function SaleProduct({ product }) {
+//
+import Toast from "../shared/toast";
+
+export default function SellProduct({ product }) {
    const [valError, setValError] = useState(false);
    const [quantity, setQuantity] = useState(0);
 
@@ -21,6 +24,8 @@ export default function SaleProduct({ product }) {
    };
 
    const addToCart = () => {
+      Toast({ type: "success", message: "Product added to cart" });
+
       if (quantity > 0 && !valError) {
          const leftQuantity = product.quantity - quantity;
          addItemToCart(product, quantity, leftQuantity);

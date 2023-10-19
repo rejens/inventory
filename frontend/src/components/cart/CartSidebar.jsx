@@ -1,23 +1,40 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartContext from "../context/CartContext";
 
 import CartItems from "./CartItems";
 
 import InventoryContext from "../context/InventoryContext";
+import { showCustomerModal } from "../modal/CustomerModal";
+import { set } from "mongoose";
 
 export default function CartSidebar() {
-   const { hideRightSidebar, changeCartState, cart, checkoutCart } =
-      useContext(CartContext);
+   //context are initialized here
+   const {
+      hideRightSidebar,
+      changeCartState,
+      cart,
+      checkoutCart,
+      customerName,
+   } = useContext(CartContext);
    const { addSales, sellProduct } = useContext(InventoryContext);
 
-   const checkoutItems = () => {
-      cart?.forEach((item) => {
-         addSales(item, +item.quantity);
-         sellProduct(item);
-      });
+   //state variables are initialized here
+   const [checkoutClick, setCheckoutClick] = useState(false);
 
-      checkoutCart();
+   const checkoutItems = () => {
+      showCustomerModal();
+      setCheckoutClick(true);
    };
+
+   useEffect(() => {
+      if (customerName && checkoutClick) {
+         cart?.forEach((item) => {
+            addSales(item, +item.quantity, customerName);
+            sellProduct(item);
+         });
+         checkoutCart();
+      }
+   }, [customerName, checkoutClick]);
 
    return (
       <div
@@ -34,9 +51,11 @@ export default function CartSidebar() {
                X
             </span>
 
-            <div className="relative top-24 left-9">
+            {/* cart items components */}
+            <div className="relative top-24">
                <CartItems />
             </div>
+
             <button
                className="absolute right-10 bottom-10"
                onClick={checkoutItems}

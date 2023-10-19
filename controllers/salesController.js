@@ -15,11 +15,6 @@ export const getSales = asyncHandler(async (req, res) => {
 
 export const addSale = asyncHandler(async (req, res) => {
    const { name, price, quantity, customerName } = req.body;
-   const response = await Sales.create({
-      name,
-      price,
-      quantity,
-      customerName,
-   });
+   const response = await Sales.create(req.body);
    res.status(201).json(response);
 });
