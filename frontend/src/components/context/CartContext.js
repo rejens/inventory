@@ -1,6 +1,7 @@
 import React from "react";
 import { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
+import Toast from "../shared/toast";
 
 const CartContext = createContext();
 
@@ -71,6 +72,10 @@ function CartContextProvider({ children, session }) {
       try {
          dispatch({ type: "MANAGE_CART", payload: [] });
          localStorage.setItem("cart", JSON.stringify([]));
+         Toast({
+            type: "success",
+            message: "cart checkout successful",
+         });
       } catch (error) {
          console.log(error);
       }

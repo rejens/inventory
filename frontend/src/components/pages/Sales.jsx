@@ -14,6 +14,7 @@ export default function Sales() {
                   <th className="font-medium">quantity</th>
                   <th className="font-medium">price</th>
                   <th className="font-medium">customer</th>
+                  <th className="font-medium">date</th>
                </tr>
             </thead>
             <tbody className="text-md">
@@ -24,11 +25,16 @@ export default function Sales() {
                         className="odd:bg-gray-200 even:bg-gray-300"
                      >
                         <td className="text-center py-3">{index + 1}</td>
-                        <td className="text-center py-3">{product.name}</td>
+                        <td className="text-center py-3">
+                           {product.product.name}
+                        </td>
                         <td className="text-center py-3">{product.quantity}</td>
-                        <td className="text-center py-3">{product.price}</td>
+                        <td className="text-center py-3">{product.product.sellingPrice}</td>
                         <td className="text-center py-3">
                            {product.customerName}
+                        </td>
+                        <td className="text-center py-3">
+                           {product.createdAt.split("T")[0]}
                         </td>
                      </tr>
                   );

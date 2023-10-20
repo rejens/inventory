@@ -60,3 +60,10 @@ export const fetchProductById = asyncHandler(async (req, res) => {
    const fetchProduct = await ProductModel.findById(id);
    res.status(200).json(fetchProduct);
 });
+
+//@desc     fetch products with low inventory
+//@route    GET /api/products/lowinventory
+export const fetchProductsWithLowInventory = asyncHandler(async (req, res) => {
+   const fetchProduct = await ProductModel.find({ quantity: { $lt: 10 } });
+   res.status(200).json(fetchProduct);
+});

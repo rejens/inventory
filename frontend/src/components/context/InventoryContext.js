@@ -240,7 +240,7 @@ function InventoryContextProvider({ children }) {
             headers: {
                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ ...product, quantity, customerName }),
+            body: JSON.stringify({ product, quantity, customerName }),
          });
          if (response.status === 201) {
             const data = await response.json();

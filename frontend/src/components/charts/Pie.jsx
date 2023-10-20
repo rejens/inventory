@@ -13,13 +13,12 @@ export default function App() {
       datasets: [
          {
             label: "investment ",
-            data: products.map((product) => product.quantity * product.price),
+            data: products.map((product) => product.quantity * product.costPrice),
 
             backgroundColor: randomColor({
                count: products.length,
-               // luminosity: "light",
                format: "rgba",
-               alpha: 0.2,
+               alpha: 0.5,
             }),
 
             borderColor: randomColor({

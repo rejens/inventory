@@ -6,7 +6,9 @@ import asyncHandler from "express-async-handler";
 // @route   GET /api/sales
 
 export const getSales = asyncHandler(async (req, res) => {
-   const response = await Sales.find({}).sort({ createdAt: -1 });
+   const response = await Sales.find({})
+      .sort({ createdAt: -1 })
+      .populate("product");
    res.json(response);
 });
 
@@ -16,5 +18,7 @@ export const getSales = asyncHandler(async (req, res) => {
 export const addSale = asyncHandler(async (req, res) => {
    const { name, price, quantity, customerName } = req.body;
    const response = await Sales.create(req.body);
+   console.log(response);
+   console.log(req.body);
    res.status(201).json(response);
 });

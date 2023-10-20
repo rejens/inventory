@@ -27,9 +27,11 @@ ChartJS.register(
 
 export default function App({ dataSet }) {
    const { sales } = useContext(InventoryContext);
-   const dateLabel = sales.map((sale) => sale.createdAt.split("T")[0]);
+   const dateLabel = sales
+      .map((sale) => sale.createdAt.split("T")[0])
+      .filter((item, index, arr) => arr.indexOf(item) === index);
    const quantityData = sales.map((sale) => sale.quantity);
-   const priceData = sales.map((sale) => sale.price);
+   const priceData = sales.map((sale) => sale.sellingPrice);
 
    const revenue = quantityData.map(
       (quantity, index) => quantity * priceData[index]
@@ -37,7 +39,7 @@ export default function App({ dataSet }) {
 
    const revenueData = sales.map((item) => ({
       date: item.createdAt.split("T")[0], // Extract the date without time
-      revenue: item.price * item.quantity,
+      revenue: item.product.sellingPrice * item.quantity,
    }));
 
    const dailyRevenue = revenueData.reduce((result, item) => {

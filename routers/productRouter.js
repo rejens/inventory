@@ -7,12 +7,14 @@ import {
    editProduct,
    fetchProductById,
    fetchAboutToExpireProduct,
+   fetchProductsWithLowInventory,
 } from "../controllers/productController.js";
 
 const router = express.Router();
 
 router.route("/").get(getProducts).post(addProduct);
 router.route("/expire").get(fetchAboutToExpireProduct);
+router.route("/lowInventory").get(fetchProductsWithLowInventory);
 router
    .route("/:id")
    .delete(deleteProduct)
