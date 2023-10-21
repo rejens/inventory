@@ -3,8 +3,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Login() {
    //managing states
-   const [passwordVisible, setPasswordVisible] = useState(false);
 
+   //for changing password visibility
+   const [passwordVisible, setPasswordVisible] = useState(false);
    const togglePasswordVisibility = () => {
       setPasswordVisible(!passwordVisible);
    };
@@ -13,6 +14,8 @@ export default function Login() {
       <div className="h-[350px] w-[500px]  bg-white p-4 rounded-md shadow-lg">
          <form action="" className="flex justify-center flex-col h-full mx-5">
             <h1 className="text-center text-green-500 text-2xl">login</h1>
+
+            {/* username input field */}
             <div className=" rounded-lg bg-slate-200 my-3 ">
                <input
                   type="text"
@@ -22,6 +25,8 @@ export default function Login() {
                   id=""
                />
             </div>
+
+            {/* password input field */}
             <div className="rounded-lg bg-slate-200 my-3 relative">
                <input
                   type={passwordVisible ? "text" : "password"}
@@ -40,6 +45,8 @@ export default function Login() {
                   </button>
                )}
             </div>
+
+            {/* login button */}
             <div className="  bg-green-500 my-2 ">
                <button
                   type="submit"
