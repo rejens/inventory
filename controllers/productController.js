@@ -4,7 +4,8 @@ import ProductModel from "../models/ProductModel.js";
 // @route   GET /api/products
 export const getProducts = async (req, res, next) => {
    try {
-      const response = await ProductModel.find({});
+      const user = req.body.user;
+      const response = await ProductModel.find({ user });
       res.json(response);
    } catch (error) {
       next(error);
@@ -84,7 +85,10 @@ export const fetchProductById = async (req, res, next) => {
 //@route    GET /api/products/lowinventory
 export const fetchProductsWithLowInventory = async (req, res, next) => {
    try {
-      const fetchProduct = await ProductModel.find({ quantity: { $lt: 10 } });
+      const fetchProduct = await ProductModel.find({
+         user: req.body.user,
+         quantity: { $lt: 10 },
+      });
       res.status(200).json(fetchProduct);
    } catch (error) {
       next(error);

@@ -13,6 +13,7 @@ import authRouter from "./routers/authRouter.js";
 
 //middleware
 import errorHandler from "./middleware/errorHandler.js";
+import { userAuthorization } from "./middleware/authorization.js";
 
 const app = new express();
 app.use(cors());
@@ -22,12 +23,13 @@ dotenv.config();
 connectDB();
 
 //authentication midldeware
-app.use("/api/auth", authRouter);
+// app.use("/api/products", userAuthorization);
 
 //routers are mounted here
-app.use("/api/products", productRouter);
-app.use("/api/sales", salesRouter);
-app.use("/api/purchased", purchasedRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/products", userAuthorization, productRouter);
+app.use("/api/sales", userAuthorization, salesRouter);
+app.use("/api/purchased", userAuthorization, purchasedRouter);
 app.use("/api/users", userRouter);
 
 app.use(errorHandler);

@@ -4,7 +4,7 @@ import Sales from "../models/SalesModel.js";
 // @route   GET /api/sales
 export const getSales = async (req, res, next) => {
    try {
-      const response = await Sales.find({})
+      const response = await Sales.find({ user: req.body.user })
          .sort({ createdAt: -1 })
          .populate("product");
       res.json(response);
@@ -17,10 +17,7 @@ export const getSales = async (req, res, next) => {
 // @route   POST /api/sales
 export const addSale = async (req, res, next) => {
    try {
-      const { name, price, quantity, customerName } = req.body;
       const response = await Sales.create(req.body);
-      console.log(response);
-      console.log(req.body);
       res.status(201).json(response);
    } catch (error) {
       next(error);

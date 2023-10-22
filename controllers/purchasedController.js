@@ -5,7 +5,9 @@ import Purchased from "../models/PurchasedModel.js";
 
 export const getPurchased = async (req, res, next) => {
    try {
-      const response = await Purchased.find({}).sort({ createdAt: -1 });
+      const response = await Purchased.find({ user: req.body.user }).sort({
+         createdAt: -1,
+      });
       res.status(200).json(response);
    } catch (error) {
       next(error);

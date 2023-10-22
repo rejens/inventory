@@ -12,7 +12,6 @@ export async function loginUser(req, res, next) {
       //fetch user data form database
       const user = await UserModel.findOne({ email }).select("+password");
 
-      console.log("user", user);
       // Check if user exists
       if (!user) {
          return res.status(400).json({ message: "Invalid credentials" });
@@ -48,9 +47,9 @@ export async function registerUser(req, res, next) {
 
       const token = jwt.sign(
          { userId: users._id, email: users.email },
-         process.env.WEB_TOKEN_SECRET,
+         process.env.JWT_SECRET,
          {
-            expiresIn: process.env.WEB_TOKEN_EXPIRY,
+            expiresIn: process.env.JWT_EXPIRY,
          }
       );
 
