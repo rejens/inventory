@@ -26,7 +26,9 @@ export default function Purchases() {
                         <td className="text-center py-3">{index + 1}</td>
                         <td className="text-center py-3">{product.name}</td>
                         <td className="text-center py-3">{product.quantity}</td>
-                        <td className="text-center py-3">{product.price}</td>
+                        <td className="text-center py-3">
+                           {product.costPrice}
+                        </td>
                         <td className="text-center py-3">{product.vendor}</td>
                      </tr>
                   );

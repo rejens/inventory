@@ -29,7 +29,9 @@ export default function Sales() {
                            {product.product.name}
                         </td>
                         <td className="text-center py-3">{product.quantity}</td>
-                        <td className="text-center py-3">{product.product.sellingPrice}</td>
+                        <td className="text-center py-3">
+                           {product.product.sellingPrice}
+                        </td>
                         <td className="text-center py-3">
                            {product.customerName}
                         </td>

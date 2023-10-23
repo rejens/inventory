@@ -4,7 +4,7 @@ const PurchasedSchema = new mongoose.Schema(
    {
       user: { type: mongoose.Schema.ObjectId, ref: "users" },
       name: { type: String, required: true },
-      price: { type: Number, required: true },
+      costPrice: { type: Number, required: true },
       quantity: { type: Number, required: true },
       vendor: { type: String, required: true },
    },

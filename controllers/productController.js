@@ -17,6 +17,7 @@ export const getProducts = async (req, res, next) => {
 export const addProduct = async (req, res, next) => {
    try {
       const request = req.body;
+      console.log("product", request);
       const createdProduct = await ProductModel.create(request);
       res.status(201).json(createdProduct);
    } catch (error) {
@@ -61,6 +62,7 @@ export const fetchAboutToExpireProduct = async (req, res, next) => {
       var formattedDate = addDays.toISOString().substr(0, 10);
       const fetchProduct = await ProductModel.find({
          expiryDate: { $lt: formattedDate, $gt: today },
+         user: req.body.user,
       });
       res.status(200).json(fetchProduct);
    } catch (error) {

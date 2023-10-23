@@ -13,16 +13,33 @@ function InventoryContextProvider({ children }) {
       purchase: [],
       sales: [],
       showDropdown: false,
+      token: document.cookie
+         .split("; ")
+         .find((row) => row.startsWith("token="))
+         ?.split("=")[1],
    });
 
    const navigate = useNavigate();
+
+   useEffect(() => {
+      if (!state.token) {
+         navigate("/login");
+      }
+   }, [state.token]);
 
    //products / add, update, delete, fetch
 
    const fetchProductById = async (id) => {
       try {
          const response = await fetch(
-            `${process.env.REACT_APP_SERVER}/products/${id}`
+            `${process.env.REACT_APP_SERVER}/products/${id}`,
+            {
+               method: "GET",
+               headers: {
+                  "Content-Type": "application/json",
+                  authorization: `${state.token}`,
+               },
+            }
          );
          if (response.status === 200) {
             const data = await response.json();
@@ -36,7 +53,14 @@ function InventoryContextProvider({ children }) {
    const fetchAllProducts = async () => {
       try {
          const response = await fetch(
-            `${process.env.REACT_APP_SERVER}/products`
+            `${process.env.REACT_APP_SERVER}/products`,
+            {
+               method: "GET",
+               headers: {
+                  "Content-Type": "application/json",
+                  authorization: `${state.token}`,
+               },
+            }
          );
          if (response.status === 200) {
             const data = await response.json();
@@ -58,6 +82,7 @@ function InventoryContextProvider({ children }) {
                method: "DELETE",
                headers: {
                   "Content-Type": "application/json",
+                  authorization: `${state.token}`,
                },
             }
          );
@@ -82,6 +107,7 @@ function InventoryContextProvider({ children }) {
                method: "POST",
                headers: {
                   "Content-Type": "application/json",
+                  authorization: `${state.token}`,
                },
                body: JSON.stringify(product),
             }
@@ -107,6 +133,7 @@ function InventoryContextProvider({ children }) {
                method: "PUT",
                headers: {
                   "Content-Type": "application/json",
+                  authorization: `${state.token}`,
                },
                body: JSON.stringify(product),
             }
@@ -132,6 +159,7 @@ function InventoryContextProvider({ children }) {
                method: "PUT",
                headers: {
                   "Content-Type": "application/json",
+                  authorization: `${state.token}`,
                },
                body: JSON.stringify(updatedProduct),
             }
@@ -157,6 +185,7 @@ function InventoryContextProvider({ children }) {
                method: "PUT",
                headers: {
                   "Content-Type": "application/json",
+                  authorization: `${state.token}`,
                },
                body: JSON.stringify(product),
             }
@@ -179,7 +208,14 @@ function InventoryContextProvider({ children }) {
    const fetchAllPurchases = async () => {
       try {
          const response = await fetch(
-            `${process.env.REACT_APP_SERVER}/purchased`
+            `${process.env.REACT_APP_SERVER}/purchased`,
+            {
+               method: "GET",
+               headers: {
+                  "Content-Type": "application/json",
+                  authorization: `${state.token}`,
+               },
+            }
          );
          if (response.status === 200) {
             const data = await response.json();
@@ -201,6 +237,7 @@ function InventoryContextProvider({ children }) {
                method: "POST",
                headers: {
                   "Content-Type": "application/json",
+                  authorization: `${state.token}`,
                },
                body: JSON.stringify(purchase),
             }
@@ -220,7 +257,13 @@ function InventoryContextProvider({ children }) {
    //sales
    const fetchAllSales = async () => {
       try {
-         const response = await fetch(`${process.env.REACT_APP_SERVER}/sales`);
+         const response = await fetch(`${process.env.REACT_APP_SERVER}/sales`, {
+            method: "GET",
+            headers: {
+               "Content-Type": "application/json",
+               authorization: `${state.token}`,
+            },
+         });
          if (response.status === 200) {
             const data = await response.json();
             dispatch({
@@ -239,6 +282,7 @@ function InventoryContextProvider({ children }) {
             method: "POST",
             headers: {
                "Content-Type": "application/json",
+               authorization: `${state.token}`,
             },
             body: JSON.stringify({ product, quantity, customerName }),
          });
@@ -267,6 +311,46 @@ function InventoryContextProvider({ children }) {
       }
    };
 
+   // navigation part
+   const fetchExpiredProducts = async () => {
+      try {
+         const res = await fetch(
+            `${process.env.REACT_APP_SERVER}/products/expire`,
+            {
+               method: "GET",
+               headers: {
+                  "Content-Type": "application/json",
+                  authorization: `${state.token}`,
+               },
+            }
+         );
+         const products = await res.json();
+         return products;
+      } catch (e) {
+         console.log(e);
+      }
+   };
+
+   //fetches low inventory products from the backend
+   const fetchLowInventoryProducts = async () => {
+      try {
+         const res = await fetch(
+            `${process.env.REACT_APP_SERVER}/products/lowInventory`,
+            {
+               method: "GET",
+               headers: {
+                  "Content-Type": "application/json",
+                  authorization: `${state.token}`,
+               },
+            }
+         );
+         const products = await res.json();
+         return products;
+      } catch (e) {
+         console.log(e);
+      }
+   };
+
    useEffect(() => {
       fetchAllProducts();
 
@@ -290,6 +374,8 @@ function InventoryContextProvider({ children }) {
             sellProduct,
             editProduct,
             changeDropdownState,
+            fetchLowInventoryProducts,
+            fetchExpiredProducts,
          }}
       >
          {children}

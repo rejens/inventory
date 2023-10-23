@@ -19,7 +19,9 @@ export const getPurchased = async (req, res, next) => {
 
 export const addPurchased = async (req, res, next) => {
    try {
+      console.log("purchased", req.body);
       const response = await Purchased.create(req.body);
+      console.log("purchase response ", response);
       res.status(201).json(response);
    } catch (error) {
       next(error);

@@ -48,7 +48,6 @@ function CartContextProvider({ children, session }) {
          if (!cart.filter((cartItem) => cartItem._id === item._id).length > 0) {
             cart.push({ ...item, quantity, leftQuantity });
             dispatch({ type: "MANAGE_CART", payload: cart });
-            // addItemToCartInLocalStorage(item.name, quantity);
             localStorage.setItem("cart", JSON.stringify(cart));
          }
       } catch (error) {

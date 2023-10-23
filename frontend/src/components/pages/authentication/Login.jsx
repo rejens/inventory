@@ -1,13 +1,43 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+   const navigate = useNavigate();
+
    //managing states
 
    //for changing password visibility
    const [passwordVisible, setPasswordVisible] = useState(false);
    const togglePasswordVisibility = () => {
       setPasswordVisible(!passwordVisible);
+   };
+
+   //handle login
+   const handleLogin = async () => {
+      const email = document.querySelector("#email").value;
+      const password = document.querySelector("#password").value;
+
+      const response = await fetch(
+         `${process.env.REACT_APP_SERVER}/auth/login`,
+         {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               email,
+               password,
+            }),
+         }
+      );
+
+      const { token } = await response.json();
+      if (token) {
+         Cookies.set("token", token);
+         window.location.replace("/");
+      }
    };
 
    return (
@@ -18,11 +48,11 @@ export default function Login() {
             {/* username input field */}
             <div className=" rounded-lg bg-slate-200 my-3 ">
                <input
-                  type="text"
+                  type="email"
                   className="bg-inherit w-full px-2 py-3 focus:outline-green-500 "
                   name=""
-                  placeholder="Username"
-                  id=""
+                  placeholder="Email"
+                  id="email"
                />
             </div>
 
@@ -33,7 +63,7 @@ export default function Login() {
                   className="bg-inherit w-full px-2 py-3 focus:outline-green-500"
                   name=""
                   placeholder="Password"
-                  id=""
+                  id="password"
                />
                {passwordVisible ? (
                   <button type="button" onClick={togglePasswordVisibility}>
@@ -49,8 +79,9 @@ export default function Login() {
             {/* login button */}
             <div className="  bg-green-500 my-2 ">
                <button
-                  type="submit"
+                  type="button"
                   className="text-white py-3 text-center w-full text-xl"
+                  onClick={handleLogin}
                >
                   login
                </button>

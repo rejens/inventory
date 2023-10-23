@@ -25,12 +25,7 @@ export async function loginUser(req, res, next) {
       // Create and sign JWT token
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
-      res.cookie("token", token, {
-         httpOnly: true,
-         maxAge: 3600,
-      });
-
-      res.json({ message: "successful" });
+      res.json({ token });
    } catch (error) {
       console.error(error);
       next(error);
@@ -55,6 +50,18 @@ export async function registerUser(req, res, next) {
 
       const { email, password } = users;
       res.status(200).json({ email, password, token });
+   } catch (error) {
+      next(error);
+   }
+}
+
+
+// @desc logout user
+// @route GET /api/auth/logout
+export async function logoutUser(req, res, next) {
+   try {
+      res.clearCookie("token");
+      res.json({ message: "You have been logged out" });
    } catch (error) {
       next(error);
    }
