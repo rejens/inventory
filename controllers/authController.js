@@ -40,21 +40,12 @@ export async function registerUser(req, res, next) {
       data.password = await bcrypt.hash(data.password, 10);
       const users = await UserModel.create(data);
 
-      const token = jwt.sign(
-         { userId: users._id, email: users.email },
-         process.env.JWT_SECRET,
-         {
-            expiresIn: process.env.JWT_EXPIRY,
-         }
-      );
-
-      const { email, password } = users;
-      res.status(200).json({ email, password, token });
+      const { email } = users;
+      res.status(201).json({ email });
    } catch (error) {
       next(error);
    }
 }
-
 
 // @desc logout user
 // @route GET /api/auth/logout

@@ -40,22 +40,12 @@ export default function RouterPage() {
          {location.pathname === "/login" || location.pathname === "/register"
             ? !token && (
                  <Routes>
-                    <Route
-                       path="/login"
-                       exact
-                       element={
-                          <div className="flex justify-center items-center h-screen bg-[#82bd61]">
-                             <Login />
-                          </div>
-                       }
-                    />
+                    <Route path="/login" exact element={<Login />} />
                     <Route
                        path="/register"
                        exact
                        element={
-                          <div className="flex justify-center items-center h-screen">
                              <Regiser />
-                          </div>
                        }
                     />
                  </Routes>
