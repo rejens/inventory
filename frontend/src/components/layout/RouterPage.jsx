@@ -29,6 +29,14 @@ export default function RouterPage() {
    const token = Cookies.get("token");
 
    if (
+      !token &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/register"
+   ) {
+      window.location.href = "/login";
+   }
+
+   if (
       token &&
       (location.pathname === "/login" || location.pathname === "/register")
    ) {
@@ -41,13 +49,7 @@ export default function RouterPage() {
             ? !token && (
                  <Routes>
                     <Route path="/login" exact element={<Login />} />
-                    <Route
-                       path="/register"
-                       exact
-                       element={
-                             <Regiser />
-                       }
-                    />
+                    <Route path="/register" exact element={<Regiser />} />
                  </Routes>
               )
             : token && (

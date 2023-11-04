@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import InventoryContext from "../context/InventoryContext";
@@ -7,16 +7,40 @@ import CartContext from "../context/CartContext";
 import SellProduct from "../modal/SellProduct";
 import CustomerModal from "../modal/CustomerModal";
 
+import Search from "../inventory/Search";
+
+// import fibonacciSearch from "../../algorithms/fibonacciSearch";
+import binarySearch from "../../algorithms/binarySearch";
+
 import { FaEdit, FaTrash, FaCartArrowDown } from "react-icons/fa";
 
 export default function Inventory() {
-   const { products, deleteProduct } = useContext(InventoryContext);
+   const { products: rawProducts, deleteProduct } =
+      useContext(InventoryContext);
    const { changeCartState } = useContext(CartContext);
+
+   const [search, setSearch] = useState("");
+   const [products, setProducts] = useState();
+   console.log("raw products", products);
+
+   useEffect(() => {
+      setProducts(rawProducts);
+   }, [rawProducts]);
+
+   useEffect(() => {
+      if (search.length > 0) setProducts([binarySearch(rawProducts, search)]);
+      else if (search.length == 0) {
+         setProducts(rawProducts);
+      }
+   }, [search]);
 
    return (
       <div>
          <CustomerModal />
          <div className="flex justify-end mx-5">
+            <div className="relative right-1/4">
+               <Search setSearch={setSearch} />
+            </div>
             <Link
                to={"/inventory/add"}
                className="bg-[#94a3b8] px-4 py-2 rounded-sm text-white"

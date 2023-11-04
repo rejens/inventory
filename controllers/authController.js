@@ -25,7 +25,7 @@ export async function loginUser(req, res, next) {
       // Create and sign JWT token
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
-      res.json({ token });
+      res.json({ token, ...user });
    } catch (error) {
       console.error(error);
       next(error);

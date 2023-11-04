@@ -10,7 +10,7 @@ import InventoryContext from "../context/InventoryContext";
 // fetches about to expire product(1 month remaning products) from the backend
 
 //logout function
-const logout = (navigate) => {
+const logout = () => {
    Cookies.set("token", "");
    window.location.replace("/login");
 };

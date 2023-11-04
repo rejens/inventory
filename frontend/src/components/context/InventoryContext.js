@@ -3,6 +3,8 @@ import { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
 import { useNavigate } from "react-router-dom";
 
+import mergeSort from "../../algorithms/mergeSort";
+
 import Toast from "../shared/toast";
 
 const InventoryContext = createContext();
@@ -20,12 +22,6 @@ function InventoryContextProvider({ children }) {
    });
 
    const navigate = useNavigate();
-
-   useEffect(() => {
-      if (!state.token) {
-         navigate("/login");
-      }
-   }, [state.token]);
 
    //products / add, update, delete, fetch
 
@@ -63,7 +59,8 @@ function InventoryContextProvider({ children }) {
             }
          );
          if (response.status === 200) {
-            const data = await response.json();
+            const data = mergeSort(await response.json());
+
             dispatch({
                type: "FETCH_ALL_PRODUCTS",
                payload: data,

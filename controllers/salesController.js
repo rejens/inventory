@@ -1,5 +1,5 @@
 import Sales from "../models/SalesModel.js";
-import "../models/ProductModel.js";
+// import "../models/ProductModel.js";
 
 // @desc    Fetch all sales data
 // @route   GET /api/sales

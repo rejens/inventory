@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Cookies from "js-cookie";
-import { useNavigate, Link } from "react-router-dom";
 import Toast from "../../shared/toast";
 
 export default function Login() {
-   const navigate = useNavigate();
 
    //managing states
 
