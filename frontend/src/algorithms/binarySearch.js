@@ -8,7 +8,7 @@ const binarySearch = (products, target) => {
       const productName = products[mid].name.toLowerCase();
 
       if (productName === target.toLowerCase()) {
-         return products[mid];
+         return [products[mid]];
       } else if (productName < target.toLowerCase()) {
          left = mid + 1;
       } else {

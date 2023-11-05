@@ -21,14 +21,13 @@ export default function Inventory() {
 
    const [search, setSearch] = useState("");
    const [products, setProducts] = useState();
-   console.log("raw products", products);
 
    useEffect(() => {
       setProducts(rawProducts);
    }, [rawProducts]);
 
    useEffect(() => {
-      if (search.length > 0) setProducts([binarySearch(rawProducts, search)]);
+      if (search.length > 0) setProducts(binarySearch(rawProducts, search)||[]);
       else if (search.length == 0) {
          setProducts(rawProducts);
       }
