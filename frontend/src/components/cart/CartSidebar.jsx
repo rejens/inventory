@@ -5,7 +5,6 @@ import CartItems from "./CartItems";
 
 import InventoryContext from "../context/InventoryContext";
 import { showCustomerModal } from "../modal/CustomerModal";
-import { set } from "mongoose";
 
 export default function CartSidebar() {
    //context are initialized here
