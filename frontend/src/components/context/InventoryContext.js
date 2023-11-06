@@ -285,11 +285,12 @@ function InventoryContextProvider({ children }) {
             body: JSON.stringify({ product, quantity, customerName }),
          });
          if (response.status === 201) {
-            const data = await response.json();
-            dispatch({
-               type: "ADD_SALES",
-               payload: data,
-            });
+            await fetchAllSales();
+            // const data = await response.json();
+            // dispatch({
+            //    type: "ADD_SALES",
+            //    payload: data,
+            // });
          }
       } catch (error) {
          console.log(error);
