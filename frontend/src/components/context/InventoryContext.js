@@ -59,7 +59,8 @@ function InventoryContextProvider({ children }) {
             }
          );
          if (response.status === 200) {
-            const data = mergeSort(await response.json());
+            const res = await response.json();
+            const data = mergeSort(res);
 
             dispatch({
                type: "FETCH_ALL_PRODUCTS",

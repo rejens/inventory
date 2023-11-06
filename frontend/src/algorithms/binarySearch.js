@@ -19,7 +19,5 @@ const binarySearch = (products, target) => {
    return null;
 };
 
-// // Use the binary search function
-// const targetProductName = "rice";
-// const product = binarySearchByName(sortedProducts, targetProductName);
+
 export default binarySearch;

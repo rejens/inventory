@@ -33,7 +33,17 @@ function CartContextProvider({ children, session }) {
    //initialize cart
    useEffect(() => {
       try {
-         const cart = JSON.parse(localStorage.getItem("cart"));
+         let cart = localStorage.getItem("cart");
+
+         if (cart === null) {
+            // If cart does not exist in localStorage, create it
+            cart = [];
+            localStorage.setItem("cart", JSON.stringify(cart));
+         } else {
+            // If cart exists in localStorage, parse it
+            cart = JSON.parse(cart);
+         }
+
          dispatch({ type: "MANAGE_CART", payload: cart });
       } catch (error) {
          console.log(error);

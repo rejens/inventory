@@ -5,7 +5,7 @@ const merge = (left, right) => {
    let j = 0;
 
    while (i < left.length && j < right.length) {
-      if (left[i].costPrice < right[j].costPrice) {
+      if (left[i].name < right[j].name) {
          result.push(left[i]);
          i++;
       } else {
@@ -18,7 +18,7 @@ const merge = (left, right) => {
 };
 
 // Merge sort function
-export default function mergeSort(products) {
+const mergeSort = (products) => {
    if (products.length <= 1) {
       return products;
    }
@@ -28,6 +28,8 @@ export default function mergeSort(products) {
    const right = mergeSort(products.slice(mid));
 
    return merge(left, right);
-}
+};
 
+// Use the merge sort function
 
+export default mergeSort;
