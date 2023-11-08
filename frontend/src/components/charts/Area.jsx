@@ -28,7 +28,9 @@ export default function App({ dataSet }) {
    const { sales } = useContext(InventoryContext);
    const dateLabel = sales
       .map((sale) => sale.createdAt.split("T")[0])
-      .filter((item, index, arr) => arr.indexOf(item) === index);
+      .filter((item, index, arr) => arr.indexOf(item) === index)
+      .reverse();
+
    const quantityData = sales.map((sale) => sale.quantity);
    const priceData = sales.map((sale) => sale.sellingPrice);
 
