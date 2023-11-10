@@ -16,7 +16,8 @@ export default function Login() {
    };
 
    //handle login
-   const handleLogin = async () => {
+   const handleLogin = async (e) => {
+      e.preventDefault();
       const email = document.querySelector("#email").value;
       const password = document.querySelector("#password").value;
 
@@ -91,7 +92,7 @@ export default function Login() {
                {/* login button */}
                <div className="  bg-green-500 my-2 ">
                   <button
-                     type="button"
+                     type="submit"
                      className="text-white py-3 text-center w-full text-xl"
                      onClick={handleLogin}
                   >

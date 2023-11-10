@@ -3,7 +3,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Toast from "../../shared/toast";
 
 export default function Login() {
-
    //managing states
 
    //for changing password visibility
@@ -18,7 +17,8 @@ export default function Login() {
    };
 
    //handle login
-   const handleRegister = async () => {
+   const handleRegister = async (e) => {
+      e.preventDefault();
       const email = document.querySelector("#email").value;
       const password = document.querySelector("#password").value;
       const confirmPassword = document.querySelector("#confirmPassword").value;
@@ -122,7 +122,7 @@ export default function Login() {
                {/* signup button */}
                <div className="  bg-blue-500 my-2 ">
                   <button
-                     type="button"
+                     type="submit"
                      className="text-white py-3 text-center w-full text-xl"
                      onClick={handleRegister}
                   >
